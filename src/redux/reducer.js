@@ -1,4 +1,5 @@
 import { ACTION_TYPES } from "./constants";
+import { FILTER_TYPES } from "./constants";
 
 // reducer.js: Логіка обробки (мозок нашого проекту).
 const todos = [
@@ -7,6 +8,22 @@ const todos = [
   { id: 2, text: "Написати на редакс", completed: false },
 ];
 
+const filterReducer = (state = "all", action) => {
+  switch (action.type) {
+    case FILTER_TYPES.all:
+      return "all";
+
+    case FILTER_TYPES.active:
+      return "active";
+
+    case FILTER_TYPES.completed:
+      return "completed";
+
+    default:
+      return state;
+  }
+};
+
 const todosReducer = (state = todos, action) => {
   switch (action.type) {
     case ACTION_TYPES.add:
@@ -14,12 +31,13 @@ const todosReducer = (state = todos, action) => {
 
     case ACTION_TYPES.remove:
       return state.filter(todo => todo.id !== action.payload);
-      
+
     case ACTION_TYPES.change:
       return state.map(todo => {
-        if (todo.id === action.id) {
+        if (todo.id === action.payload) {
           return { ...todo, completed: !todo.completed };
         }
+        return todo;
       });
 
     //* АБО
