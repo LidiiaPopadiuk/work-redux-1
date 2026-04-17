@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { ACTION_TYPES } from "./constants";
 
 // Return type,payload
-const addTodo = text => {
+export const addTodo = text => {
   return {
     type: ACTION_TYPES.add,
     payload: {
@@ -15,14 +15,14 @@ const addTodo = text => {
   };
 };
 
-const removeTodo = id => {
+export const removeTodo = id => {
   return {
     type: ACTION_TYPES.remove,
     payload: id,
   };
 };
 
-const changeTodo = id => {
+export const changeTodo = id => {
   return {
     type: ACTION_TYPES.change,
     payload: id,

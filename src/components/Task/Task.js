@@ -1,7 +1,10 @@
 import { MdClose } from "react-icons/md";
 import css from "./Task.module.css";
+import { removeTodo, changeTodo } from "redux/actions";
+import { useDispatch } from "react-redux";
 
 export const Task = ({ task }) => {
+  const dispatch = useDispatch()
   return (
     <div className={css.wrapper}>
       <input
@@ -10,7 +13,7 @@ export const Task = ({ task }) => {
         checked={task.completed}
       />
       <p className={css.text}>{task.text}</p>
-      <button className={css.btn}>
+      <button className={css.btn} onClick={() => dispatch(removeTodo(task.id))}>
         <MdClose size={24} />
       </button>
     </div>

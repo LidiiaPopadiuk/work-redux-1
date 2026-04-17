@@ -1,11 +1,15 @@
 import { Button } from "components/Button/Button";
 import css from "./TaskForm.module.css";
+import { addTodo } from "redux/actions";
+import { useDispatch } from "react-redux";
 
 export const TaskForm = () => {
-  const handleSubmit = (event) => {
+  const dispatch = useDispatch(); //! дозволяє активувати action, без цього вони не будуть гарно працювати
+  const handleSubmit = event => {
     event.preventDefault();
-    const form = event.target;
-    form.reset();
+    const value = event.target.elements.text.value;
+    dispatch(addTodo(value));
+    event.target.reset();
   };
 
   return (

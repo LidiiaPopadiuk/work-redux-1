@@ -12,9 +12,26 @@ const todosReducer = (state = todos, action) => {
     case ACTION_TYPES.add:
       return [...state, action.payload];
 
+    case ACTION_TYPES.remove:
+      return state.filter(todo => todo.id !== action.payload);
+      
+    case ACTION_TYPES.change:
+      return state.map(todo => {
+        if (todo.id === action.id) {
+          return { ...todo, completed: !todo.completed };
+        }
+      });
+
+    //* АБО
+    // case ACTION_TYPES.change:
+    // return state.map(todo =>
+    //   todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
+    // );
     default:
       return state;
   }
 };
 
 export default todosReducer;
+
+//! чому в мене в devtools не відображаються ліворуч події при видаленні
