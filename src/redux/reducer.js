@@ -1,5 +1,6 @@
 import { ACTION_TYPES } from "./constants";
 import { FILTER_TYPES } from "./constants";
+import { combineReducers } from "redux";
 
 // reducer.js: Логіка обробки (мозок нашого проекту).
 const todos = [
@@ -10,14 +11,14 @@ const todos = [
 
 const filterReducer = (state = "all", action) => {
   switch (action.type) {
-    case FILTER_TYPES.all:
-      return "all";
+    case FILTER_TYPES.setFilter:
+      return action.payload;
 
-    case FILTER_TYPES.active:
-      return "active";
+    // case FILTER_TYPES.active:
+    //   return "active";
 
-    case FILTER_TYPES.completed:
-      return "completed";
+    // case FILTER_TYPES.completed:
+    //   return "completed";
 
     default:
       return state;
@@ -50,6 +51,13 @@ const todosReducer = (state = todos, action) => {
   }
 };
 
-export default todosReducer;
+const rootReducer = combineReducers({
+  todos: todosReducer,
+  filters: filterReducer
+})
+
+//! combineReducers - комбінує два редюсера
+
+export default rootReducer;
 
 //! чому в мене в devtools не відображаються ліворуч події при видаленні

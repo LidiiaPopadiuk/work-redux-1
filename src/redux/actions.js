@@ -2,6 +2,7 @@
 
 import { nanoid } from "nanoid";
 import { ACTION_TYPES } from "./constants";
+import { FILTER_TYPES } from "./constants";
 
 // Return type,payload
 export const addTodo = text => {
@@ -28,3 +29,10 @@ export const changeTodo = id => {
     payload: id,
   }
 }
+
+export const filterAll = (filterType) => {
+  return {
+    type: FILTER_TYPES.setFilter,
+    payload: filterType
+  }
+} //! чому ми передаємо filterType та навіщо

@@ -1,5 +1,7 @@
 // constants.js: Запобігає помилкам у типах екшенів.
 
+// import { activeTodo } from "./selectors";
+
 export const ACTION_TYPES = {
   add: "todos/addTodo",
   remove: "todos/removeTodo",
@@ -7,9 +9,10 @@ export const ACTION_TYPES = {
 };
 
 export const FILTER_TYPES = {
-  all: filters/filterAll,
-  active: filters/filterActive,
-  completed: filters/filterCompleted,
+  setFilter: "filters/setFilter",
+  all: "all",
+  active: "active",
+  completed: "completed"
 }
 
 //! чому тут filters/ а не щось інше, звідки береться назва

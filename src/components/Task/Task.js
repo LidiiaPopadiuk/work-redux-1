@@ -11,6 +11,7 @@ export const Task = ({ task }) => {
         type="checkbox"
         className={css.checkbox}
         onChange={() => dispatch(changeTodo(task.id))}
+        checked={task.completed}
       />
       <p className={css.text}>{task.text}</p>
       <button className={css.btn} onClick={() => dispatch(removeTodo(task.id))}>
