@@ -5,10 +5,10 @@ import { FILTER_TYPES } from "./constants";
 export const getTasks = state => state.todos; //! Спитатаи що це означає та навіщо todos
 export const getFilter = state => state.filters;
 
-const activeTodo = state =>
+export const activeTodo = state =>
   state.todos.filter(todo => todo.completed === false);
 
-const completedTodos = state =>
+export const completedTodos = state =>
   state.todos.filter(todo => todo.completed === true);
 
 export const filteredTodos = state => {

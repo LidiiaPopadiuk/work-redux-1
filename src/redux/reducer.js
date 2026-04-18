@@ -61,3 +61,4 @@ const rootReducer = combineReducers({
 export default rootReducer;
 
 //! чому в мене в devtools не відображаються ліворуч події при видаленні
+//! чи можна в js писати return та div якщо це ніби тільки в jsx можна робити
